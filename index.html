@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <script src="/socket.io/socket.io.js"></script>
+        <script src="app.js"></script>
+        <script type="text/javascript">
+            var socket = io.connect("http://localhost:9090");
+
+            $('#send').on('click', function(event) {
+                event.preventDefault();
+                socket.emit('data', {
+                    name: $('#name').val(),
+                    msg: $('#msg').val()
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <div>
+            <form>
+                <label>Name: </label>
+                <input type="text" name="name"/><br/>
+                <label>Chat Message: </label>
+                <input type="text" name="msg"/><br/>
+                <input type="submit" onclick="send()" value="Submit Chat"/>
+            </form>
+        </div>
+    </body>
+</html>
